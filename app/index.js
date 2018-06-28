@@ -6,6 +6,7 @@ import dva from './utils/dva'
 import Router from './router'
 
 import authModel from './models/auth'
+import homeModel from './models/home'
 import forgetModel from './models/forget'
 import registerModel from './models/register'
 import landmarkModel from './models/landMark'
@@ -20,6 +21,7 @@ const app = dva({
     initialState: {},
     models: [
         authModel,
+        homeModel,
         forgetModel,
         registerModel,
         landmarkModel,

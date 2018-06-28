@@ -27,7 +27,7 @@ export default StyleSheet.create({
         width: '100%'
     },
     avatarBox: {
-        flexDirection: 'row',
+        // flexDirection: 'row',
         padding: pxToDp(60)
     },
     avatarWrap: {
@@ -53,8 +53,9 @@ export default StyleSheet.create({
         height: pxToDp(200),
         width: pxToDp(440),
         overflow: 'hidden',
-        alignItems: 'center',
-        justifyContent: 'center',
+        paddingTop: pxToDp(60),
+        // alignItems: 'center',
+        // justifyContent: 'center',
         backgroundColor: 'rgba(0,0,0,0)'
     },
     userNameText: {

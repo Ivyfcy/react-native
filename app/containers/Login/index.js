@@ -8,7 +8,6 @@ import { Actions } from 'react-native-router-flux'
 
 import { passWord } from '../../utils/auth'
 import styles from './style'
-
 import './img/login_userid_blue.png'
 import './img/login_password_blue.png'
 
@@ -20,7 +19,6 @@ class Login extends Component {
         isShowPwd: false,
         inputType: 'password'
     }
-
     onLogin = () => {
         let { dispatch, form: { validateFields } } = this.props
         validateFields((err, data) => {
@@ -68,6 +66,19 @@ class Login extends Component {
         let { isUsernameFocus, isPasswordFocus, inputType } = this.state
         return (
             <View style={styles.containers}>
+                <View style={{ position: 'absolute', left: 30, top: 20 }}>
+                    <TouchableOpacity
+                        // style={{ paddingRight: 300 }}
+                        activeOpacity={0.5}
+                        onPress={() => {
+                            Actions.pop()
+                        }}
+                    >
+                        <Image style={{ backgroundColor: 'red' }}
+                            source={require('../../assets/img/back.png')}
+                        />
+                    </TouchableOpacity>
+                </View>
                 <ScrollView overScrollMode='always' showsVerticalScrollIndicator={false}>
                     <View style={styles.logo}>
                         <Image
@@ -132,12 +143,12 @@ class Login extends Component {
                         </TouchableOpacity>
                     </View>
                     <TouchableOpacity style={styles.botton} onPress={() => this.onLogin()} activeOpacity={0.5} >
-                        <Text style={styles.bottonText}>登  录</Text>
+                        <Text style={styles.bottonText}>LOGIN</Text>
                     </TouchableOpacity>
                     <View style={styles.footer}>
-                        <View><Text style={styles.textBgColor} onPress={() => Actions.forget({ phoneNum: (getFieldProps('username')).value })}>忘记密码</Text></View>
+                        <View><Text style={styles.textBgColor} onPress={() => Actions.forget({ phoneNum: (getFieldProps('username')).value })}>Forget you'password</Text></View>
                         <View style={styles.footerSplit}><Text style={styles.textBgColor}>|</Text></View>
-                        <View><Text style={styles.textBgColor} onPress={() => Actions.register()}>注册账号</Text></View>
+                        <View><Text style={styles.textBgColor} onPress={() => Actions.register()}>Register</Text></View>
                     </View>
                 </ScrollView>
 

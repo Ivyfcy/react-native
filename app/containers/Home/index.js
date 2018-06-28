@@ -1,22 +1,17 @@
 import React, { Component } from 'react'
-import { StyleSheet } from 'react-native'
+import { View, Text, TouchableOpacity, Image } from 'react-native'
 import { connect } from 'react-redux'
-
-import HeaderLeft from '../../components/headerLeft'
+import { Actions } from 'react-native-router-flux'
 import HeaderRight from '../../components/headerRight'
-import { MapView } from 'dynamax-react-native-amap'
+import Other from './other'
+import styles from './style'
 
-@connect(({ auth }) => ({ ...auth }))
-class Map extends Component {
+@connect(({ auth, home }) => ({ auth, home }))
+class Home extends Component {
     static navigationOptions = {
-        headerTitle: '漳州荔枝海公园',
-        HeaderLeft: <HeaderLeft />,
+        headerTitle: 'HOME',
         headerRight: <HeaderRight />,
         tabBarLabel: '首页'
-    }
-
-    state = {
-        text: '1212'
     }
 
     gotoDetail = () => {
@@ -30,30 +25,96 @@ class Map extends Component {
 
     render() {
         return (
-            <MapView style={StyleSheet.absoluteFill}
-                locationEnabled
-                zoomLevel={8}
-                showsBuildings={false}
-                showsCompass={false}
-                limitRegion={{
-                    // latitude: (24.474807 - 24.462063) / 2 + 24.462063,
-                    latitude: (24.479000 - 24.462063) / 2 + 24.462063,
-                    longitude: (117.648575 - 117.624655) / 2 + 117.624655,
-                    // latitudeDelta: (24.474807 - 24.462063),
-                    latitudeDelta: (24.479000 - 24.462063),
-                    longitudeDelta: (117.648575 - 117.624655)
-                }}>
-                {/* <GroundOverlay
-                    icon={require('./img/park_map.jpg')}
-                    coordinateBounds={{
-                        northEast: { latitude: 24.462063, longitude: 117.624655 },
-                        southWest: { latitude: 24.474807, longitude: 117.648575 }
-                        southWest: { latitude: 24.479000, longitude: 117.648575 }
-                    }}
-                /> */}
-            </MapView>
+            <View>
+                {this.props.home.otherchange ? <Other /> : <View style={styles.Alltext} >
+                    <View style={styles.Textwrap}>
+                        <View style={styles.pic} >
+                            <Image source={require('./img/refresh.png')} />
+                        </View>
+                        <View style={styles.text}>
+                            <View style={{ flex: 1 }}>
+                                <Text onPress={() => Actions.register()} style={{ fontSize: 20 }}>Bookings</Text>
+                                <Text onPress={() => Actions.register()}> 2 bookings</Text>
+                            </View>
+                            <TouchableOpacity style={styles.arrow} >
+                                <Image source={require('./img/back.png')} />
+                            </TouchableOpacity>
+                        </View>
+                    </View>
+                    <View style={styles.Textwrap}>
+                        <View style={styles.pic} >
+                            <Image source={require('./img/refresh.png')} />
+                        </View>
+                        <View style={styles.text}>
+                            <View style={{ flex: 1 }}>
+                                <Text onPress={() => Actions.register()} style={{ fontSize: 20 }}>Community</Text>
+                                <Text onPress={() => Actions.register()}> 2 bookings</Text>
+                            </View>
+                            <TouchableOpacity style={styles.arrow} >
+                                <Image source={require('./img/back.png')} />
+                            </TouchableOpacity>
+                        </View>
+                    </View>
+                    <View style={styles.Textwrap}>
+                        <View style={styles.pic} >
+                            <Image source={require('./img/refresh.png')} />
+                        </View>
+                        <View style={styles.text}>
+                            <View style={{ flex: 1 }}>
+                                <Text onPress={() => Actions.register()} style={{ fontSize: 20 }}>Events</Text>
+                                <Text onPress={() => Actions.register()}> 2 bookings</Text>
+                            </View>
+                            <TouchableOpacity style={styles.arrow} >
+                                <Image source={require('./img/back.png')} />
+                            </TouchableOpacity>
+                        </View>
+                    </View>
+                    <View style={styles.Textwrap}>
+                        <View style={styles.pic} >
+                            <Image source={require('./img/refresh.png')} />
+                        </View>
+                        <View style={styles.text}>
+                            <View style={{ flex: 1 }}>
+                                <Text onPress={() => Actions.register()} style={{ fontSize: 20 }}>Front Desk</Text>
+                                <Text onPress={() => Actions.register()}> 2 bookings</Text>
+                            </View>
+                            <TouchableOpacity style={styles.arrow} >
+                                <Image source={require('./img/back.png')} />
+                            </TouchableOpacity>
+                        </View>
+                    </View>
+                    <View style={styles.Textwrap}>
+                        <View style={styles.pic} >
+                            <Image source={require('./img/refresh.png')} />
+                        </View>
+                        <View style={styles.text}>
+                            <View style={{ flex: 1 }}>
+                                <Text onPress={() => Actions.register()} style={{ fontSize: 20 }}>Perks</Text>
+                                <Text onPress={() => Actions.register()}> 2 bookings</Text>
+                            </View>
+                            <TouchableOpacity style={styles.arrow} >
+                                <Image source={require('./img/back.png')} />
+                            </TouchableOpacity>
+                        </View>
+                    </View>
+                    <View style={styles.Textwrap}>
+                        <View style={styles.pic} >
+                            <Image source={require('./img/refresh.png')} />
+                        </View>
+                        <View style={styles.text}>
+                            <View style={{ flex: 1 }}>
+                                <Text onPress={() => Actions.register()} style={{ fontSize: 20 }}>Information</Text>
+                                <Text onPress={() => Actions.register()}> 2 bookings</Text>
+                            </View>
+                            <TouchableOpacity style={styles.arrow} >
+                                <Image source={require('./img/back.png')} />
+                            </TouchableOpacity>
+                        </View>
+                    </View>
+                </View>}
+            </View >
         )
     }
 }
 
-export default Map
+export default Home

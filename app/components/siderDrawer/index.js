@@ -30,7 +30,8 @@ class DrawerContent extends React.Component {
                                 }
                             </View>
                             <View style={styles.userName}>
-                                <Text style={styles.userNameText}>{this.props.userInfo.nickName}</Text>
+                                {/* <Text style={styles.userNameText}>{this.props.userInfo.nickName}</Text> */}
+                                <Text style={styles.userNameText}>{'张三'}</Text>
                             </View>
                         </View>
                         <Text style={styles.userPhone}>{this.props.userInfo.phone}</Text>
@@ -38,15 +39,6 @@ class DrawerContent extends React.Component {
                     <Image style={styles.headerBg} source={require('./img/header.png')} />
                 </TouchableOpacity>
                 <View style={styles.list}>
-                    {/* <View style={styles.item}>
-                        <View style={styles.itemIcon}>
-                            <Image
-                                source={require('./img/order.png')}
-                                onPressIn={this.onClickView}
-                            />
-                        </View>
-                        <Text style={styles.itemText} onPress={Actions.comingSoon}>我的订单</Text>
-                    </View> */}
                     <View style={styles.item}>
                         <View style={styles.itemIcon}>
                             <Image
@@ -54,17 +46,17 @@ class DrawerContent extends React.Component {
                                 onPressIn={this.onClickView}
                             />
                         </View>
-                        <Text style={styles.itemText} onPress={Actions.comingSoon}>离线资源包</Text>
+                        <Text style={styles.itemText} onPress={Actions.comingSoon}>Notification</Text>
                     </View>
-                    {/* <View style={styles.item}>
+                    <View style={styles.item}>
                         <View style={styles.itemIcon}>
                             <Image
                                 source={require('./img/suggest.png')}
                                 onPressIn={this.onClickView}
                             />
                         </View>
-                        <Text style={styles.itemText} onPress={Actions.comingSoon}>意见反馈</Text>
-                    </View> */}
+                        <Text style={styles.itemText} onPress={Actions.comingSoon}>Membership</Text>
+                    </View>
                     <View style={styles.item}>
                         <View style={styles.itemIcon}>
                             <Image
@@ -72,7 +64,25 @@ class DrawerContent extends React.Component {
                                 onPressIn={this.onClickView}
                             />
                         </View>
-                        <Text style={styles.itemText} onPress={Actions.comingSoon}>客服热线</Text>
+                        <Text style={styles.itemText} onPress={Actions.comingSoon}>Profile</Text>
+                    </View>
+                    <View style={styles.item}>
+                        <View style={styles.itemIcon}>
+                            <Image
+                                source={require('./img/phone.png')}
+                                onPressIn={this.onClickView}
+                            />
+                        </View>
+                        <Text style={styles.itemText} onPress={Actions.comingSoon}>My Bookings</Text>
+                    </View>
+                    <View style={styles.item}>
+                        <View style={styles.itemIcon}>
+                            <Image
+                                source={require('./img/phone.png')}
+                                onPressIn={this.onClickView}
+                            />
+                        </View>
+                        <Text style={styles.itemText} onPress={Actions.comingSoon}>Event Tickets</Text>
                     </View>
                     <View style={styles.item}>
                         <View style={styles.itemIcon}>
@@ -81,11 +91,17 @@ class DrawerContent extends React.Component {
                                 onPressIn={this.onClickView}
                             />
                         </View>
-                        <Text style={styles.itemText} onPress={Actions.userSettings}>设置</Text>
+                        <Text style={styles.itemText} onPress={Actions.userSettings}>Settings</Text>
                     </View>
-                    {/* <View style={styles.item}>
-                        <Text style={styles.itemText} onPress={() => this.onLogout()}>退出</Text>
-                    </View> */}
+                    <View style={styles.item}>
+                        <View style={styles.itemIcon}>
+                            <Image
+                                source={require('./img/setting.png')}
+                                onPressIn={this.onClickView}
+                            />
+                        </View>
+                        <Text style={styles.itemText} onPress={() => Actions.initial()}>Log out</Text>
+                    </View>
                 </View>
                 <Image
                     style={styles.background}

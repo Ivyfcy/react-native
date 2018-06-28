@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react'
-import { Scene, Router, Drawer, Stack } from 'react-native-router-flux'
+import { Scene, Router, Stack, Drawer } from 'react-native-router-flux'
 import { Image, View } from 'react-native'
 import { connect } from 'react-redux'
 
@@ -10,7 +10,8 @@ import * as styles from './assets/style/layout'
 import Login from './containers/Login'
 import Register from './containers/Register'
 import Forget from './containers/Forget'
-// import Home from './containers/Home'
+import Initial from './containers/Initial'
+import Home from './containers/Home'
 import ComingSoon from './containers/ComingSoon'
 // import map from './containers/Map/Index'
 import POIDetail from './containers/Map/POIDetail'
@@ -22,17 +23,19 @@ import UserInfoSettings from './containers/UserSettings/userInfoSettings'
 import ScanScreen from './containers/Map/QRCodeScanner'
 import WebView from './containers/WebView'
 
-const rightButton = <View style={{height: 44, width: 55, justifyContent: 'center', paddingRight: 15}} />
+const rightButton = <View style={{ height: 44, width: 55, justifyContent: 'center', paddingRight: 15 }} />
 
 @connect(({ auth }) => ({ ...auth }))
 class RouterComponent extends PureComponent {
     render() {
-        let { isLogin, loading } = this.props
+        let { loading } = this.props
         if (loading) return <Loading />
         return (
             <Router>
                 <Stack key='root' {...styles.navigationOption}>
-                    <Scene key='login' hideNavBar component={Login} title=' 登录' initial={!isLogin} />
+                    {/* <Scene key='home' component={Home} title='HOME' initial /> */}
+                    <Scene key='initial' hideNavBar component={Initial} title='选择' initial />
+                    <Scene key='login' component={Login} hideNavBar title='登录' />
                     <Scene key='forget' component={Forget} title=' 忘记密码' renderLeftButton={<HeaderLeftBack />} />
                     <Scene key='register' component={Register} title=' 注册' renderLeftButton={<HeaderLeftBack />} />
                     <Scene key='comingSoon' clone title='敬请期待' component={ComingSoon} renderLeftButton={<HeaderLeftBack />} />
@@ -50,10 +53,11 @@ class RouterComponent extends PureComponent {
                         contentComponent={DrawerContent}
                         drawerWidth={styles.drawerWidth}
                         drawerIcon={<View style={{ padding: 2 }}><Image source={require('./assets/img/login_userid_white.png')} /></View>}
-                        initial
+
                     >
                         <Stack key='mapRoot'>
-                            <Scene key='map' title='扫码' component={ModifyPwd} renderRightButton={rightButton} />
+                            {/* <Scene key='map' title='扫码' component={ModifyPwd} renderRightButton={rightButton} /> */}
+                            <Scene key='home' component={Home} title='HOME' renderRightButton={rightButton} />
                         </Stack>
                     </Drawer>
                 </Stack>
